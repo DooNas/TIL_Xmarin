@@ -4,12 +4,39 @@ namespace TestConSole
 {
     class Program
     {
+        #region Study_Lambda_forDelegate
         delegate int Calc(int x, int y);
         delegate void DelegateLambda();
+        #endregion
+
 
         static void Main(string[] args)
         {
-            LambdaStudy();
+
+            //LingQStudy();
+            #region Study_LingQ
+            void LingQStudy()
+            {
+                ClassForLingQuStudy[] lingQlist =
+                {
+                    new ClassForLingQuStudy(){name = "핑크퐁", age = 10, address = "시카고"},
+                    new ClassForLingQuStudy(){name = "뽀로로", age = 15, address = "뉴욕"},
+                    new ClassForLingQuStudy(){name = "손오공", age = 20, address = "한국"},
+                    new ClassForLingQuStudy(){name = "강힘찬", age = 50, address = "베를린"}
+                };
+                Console.WriteLine("ForEach를 통한 배열 출력");
+                foreach(var item in lingQlist)
+                {
+                    if(item.age >= 15)Console.WriteLine($"이름 : {item.name}\t나이 : {item.age}\t주소 : {item.address}\t");
+                    
+                }
+                Console.WriteLine("LingQ를 통한 배열 출력");
+                var lingQ = from item in lingQlist where item.age >= 15 select item;
+                foreach(var item in lingQ) Console.WriteLine($"이름 : {item.name}\t나이 : {item.age}\t주소 : {item.address}\t");
+            }
+            #endregion
+
+            //LambdaStudy();
             #region Study_Lambda
             void LambdaStudy()
             {
