@@ -4,10 +4,30 @@ namespace TestConSole
 {
     class Program
     {
+        delegate int Calc(int x, int y);
+        delegate void DelegateLambda();
+
         static void Main(string[] args)
         {
+            LambdaStudy();
+            #region Study_Lambda
+            void LambdaStudy()
+            {
+                Calc cal = (int x, int y) => x + y;
+                Console.WriteLine($"람다식 방식 : {cal(5,10)}");
 
+                Calc cal2;
+                cal2 = delegate(int x, int y) { return x + y; };
+                Console.WriteLine($"익명메소드 방식 : {cal2(5, 10)}");
 
+                DelegateLambda dl = () =>
+                {
+                    Console.WriteLine("문형식 람다입니다.");
+                };
+                dl();
+
+            }
+            #endregion
             //CollectionStudy();
             #region Study_Collections, Dicitionary, SortedList
             void CollectionStudy()
@@ -66,11 +86,10 @@ namespace TestConSole
                     Console.WriteLine($"인덱스 : {index}  값 : {sl.GetByIndex(index)}");
                 }
 
-                Console.ReadLine();
             }
             #endregion
 
-
+            Console.ReadLine();
         }
     }
 }
