@@ -13,6 +13,27 @@ namespace TestConSole
         static void Main(string[] args)
         {
 
+            //FuncAcitionStudy();
+            #region Study_Func<TResult>, Action<T>
+            void FuncAcitionStudy()
+            {
+                Func<int, int, int> _func1 = (int x, int y) => x + y;
+                Console.WriteLine(_func1(5,10));
+
+                Func<int> _func2 = () => 50;
+                Console.WriteLine(_func2());
+
+                Func<int, string> _func3 = (int x) => x + "입니다.";
+                Console.WriteLine(_func3(5));
+
+
+                Action<int, int> _Act1 = (x, y) =>
+                {
+                    Console.WriteLine($"액션 대리자 값 : {x + y}");
+                };
+                _Act1(3, 7);
+            }
+            #endregion
             //LingQStudy();
             #region Study_LingQ
             void LingQStudy()
@@ -35,7 +56,6 @@ namespace TestConSole
                 foreach(var item in lingQ) Console.WriteLine($"이름 : {item.name}\t나이 : {item.age}\t주소 : {item.address}\t");
             }
             #endregion
-
             //LambdaStudy();
             #region Study_Lambda
             void LambdaStudy()
