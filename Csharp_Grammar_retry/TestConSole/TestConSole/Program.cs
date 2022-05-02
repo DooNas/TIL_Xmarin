@@ -1,9 +1,14 @@
 ﻿using System.Collections;
+using System.Threading;
 
 namespace TestConSole
 {
     class Program
     {
+        #region Study_Thread
+        static Thread thread1;
+        static Thread thread2;
+        #endregion
         #region Study_Lambda_forDelegate
         delegate int Calc(int x, int y);
         delegate void DelegateLambda();
@@ -13,6 +18,36 @@ namespace TestConSole
         static void Main(string[] args)
         {
 
+            ThreadStudy();
+            #region Study_Thread
+            void ThreadStudy()
+            {
+                thread1 = new Thread(Thread_test1);
+                thread1.Start();
+                thread2 = new Thread(Thread_test2);
+                thread2.Start();
+            }
+            void Thread_test1()
+            {
+                int Count = 0;
+                while (true)
+                {
+                    if (Count > 10) thread1.Abort(); //쓰레드 실행 취소
+                    Console.WriteLine($"첫번째 쓰레드 {Count}");
+                    Thread.Sleep(1000);
+                    Count++;
+                }
+            }
+            void Thread_test2()
+            {
+                while (true)
+                {
+                    Console.WriteLine("두번째 쓰레드");
+                    Thread.Sleep(500);
+                }
+            }
+
+            #endregion
             //FuncAcitionStudy();
             #region Study_Func<TResult>, Action<T>
             void FuncAcitionStudy()
