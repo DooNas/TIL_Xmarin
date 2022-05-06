@@ -14,7 +14,9 @@ namespace Study_Xmarin
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
+            //MainPage = new Ch2_ContentPage();
+            MainPage = new NavigationPage( new Ch3_Toolbar());
         }
 
         protected override void OnStart()
